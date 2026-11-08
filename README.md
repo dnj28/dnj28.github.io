@@ -355,13 +355,11 @@ Commands entered:
 
 ## Step 41. Istall a package from the AUR (Google chrome):
 - To begin installing Google Chrome enter the command **paru -S google-chrome**.
-
-
-
+- Verify the installation by entering the command **google-chrome-stable --version**.
 
 
 ## Part 14. - Final configuration and reboot.
-
+- For the final step, enter the command **sudo reboot** to restart the VM and ensure the LXQT desktop evironment and applications are working properly. 
 
 
   
