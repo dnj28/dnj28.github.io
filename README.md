@@ -234,12 +234,133 @@ options root=UUID=**ROOT-UUID** rw
 - Configure the Simple Desktop Display Manager to start automatically when arch is boots by entering the command **systemctl enable sddm**.
 - To enable VMware integration use the command **systemctl enable vmtoolsd**.
 
-# Part 9 - Creating User Accounts.
+# Part 9 - Creating User Accounts (Personal).
 ---
-## step 32. Creting personal account:
-#
+## Step 32. Creating personal account:
+- User accounts can be created using **useradd -m -G wheel -s /usr/bin/zsh username**. This adds the user account to the **wheel group**.
+- For my user account my command will be **useradd -m -G wheel -s /usr/bin/zsh dylan**
+- Give the user a password by entering the command **passwd username**. In my case, it will be **passwd dylan**.
+
+## Step 33. Creating User Accounts (Other)
+- Essentially, repeat all the steps from **Step 32**, making sure to replace the username with the specified user.
+- Per the assignment instructions the command for adding the user codi would be **useradd -m -G wheel -s /usr/bin/zsh codi**
+
+## Step 34. Adding sudo permissions to the wheel group:
+- Open the configuration for sudoers by typing the command **EDITOR=nano visudo**.
+- Find **# %wheel ALL=(ALL:ALL) ALL**, remove the **#**, save the change, and exit nano. The users in the wheel group should now have sudo permissions enabled.
+
+# Part 10. Shell Installation / Color Coded Terminal
+---
+## Step 35. Enter the Zsh shell as personal user:
+- In the previous steps, I chose the Zsh shell for my installtion.
+- To log into the shell, enter the command **su - yourusername** to switch to log in as the personal user, considering there are now 2 user accounts.
+- Next, enter the command **echo $SHELL** to confirm the Zsh shell is in use.
+
+## Step 36. Customizing the terminal colors:
+- First, enter the command **nano ~/.zshrc** to open the Zsh file with nano.
+
+Enter the following text in the file as follows:
+- To enable zsh color support type:
+
+autoload -Uz colors
+
+colors
+
+- To configure a colored terminal prompt type:
+
+PROMPT='%F{cyan}%n@%m%f:%F{green}%~%f %# '
+
+- To enable colored output type:
+
+alias ls='ls --color=auto'
+
+alias grep='grep --color=auto'
+
+- Finally, save the file and view the newly added color coded terminal by entering the command **source ~/.zshrc**.
+
+## Step 37. Adding shell aliases
+- Again, enter the command **nano ~/.zshrc** to return to the Zsh file with nano.
+
+Aliases used for this VM:
+
+- Directory shortcuts
+  
+alias ll='ls -lah'
+
+alias la='ls -A'
+
+alias ..='cd ..'
+
+alias ...='cd ../..'
+
+- System management
+
+alias update='sudo pacman -Syu'
+
+alias clean='sudo pacman -Sc'
+
+- Networking
+  
+alias myip='ip addr'
+
+alias ports='ss -tuln'
+
+- Terminal
+  
+alias cls='clear'
+
+alias grep='grep --color=auto'
+
+- Next, save and exit the Zsh file and confirm it using the command **source ~/.zshrc**.
+
+# Part 11 - SSH.
+---
+## Step 38. Enable SSH
+- For this guide SSH was installed in the previous steps.
+- To enable its server service use the command **sudo systemctl enable sshd**.
+- Next, to start the service, enter **sudo systemctl start sshd**.
+- To verify if the SSH is running, enter **sudo systemctl status sshd**.
+
+# Part 12 - Generating the automatic graphical startup.
+---
+## Step 39. Set the default system target.
+- Set the system target using the command **sudo systemctl set-default graphical.target** and chaeck it by entering the command **systemctl get-default**.
+
+## 13 - Installing an AUR package.
+---
+# Step 40. Install an AUR helper
+- considering that git and base-devel were installed in the previous steps, we only need to download the para AUR helper.
+- To download the paru AUR helper enter the command **git clone https://aur.archlinux.org/paru.git**.
+- Now, to enter the paru directory, enter **cd paru**.
+- Once in the paru directory, create and install the package by entering the command **makepkg -si**.
+
+** Side Notes:**
+- ERROR oocurred upon enering the command **makepkg -si**: Output = error: could not compile 'paru' (bin "paru").
+
+**Fixing the Paru installtion error**
+
+Commands entered: 
+- makepkg -si 2>&1 | tee 'error' ~/paru-build.log
+- grep -n -B 5 -A 10 'error' ~/paru-build.log
+- Output: signal: 9, SIGKILL: kill
+- The output is likely related to a lack of available memory error.
+
+- **free -h**
+- **sudo dmesg -T | grep -i -E 'out of memory|killed process'**
+- Upon entering the commands the output revealed that my available memory was 3.8Gi which is not enough for the installation process to complete.
+- To fix the issue I powered off my VM, and adgusted the VM's settings to have an available memory of 6144 mb.
+- I saved the changes, powered on the VM, and then re-typed the installation commands to successfully complete the Paru installation process. 
 
 
+
+## Step 41. Istall a package from the AUR (Google chrome):
+- To begin installing Google Chrome enter the command **paru -S google-chrome**.
+
+
+
+
+
+## Part 14. - Final configuration and reboot.
 
 
 
