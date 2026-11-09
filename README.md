@@ -11,7 +11,7 @@ System Administration: 353-01
 # Abstract
 ---
 
-The purpose of this guide is to document the steps taken to install Arch Linux in a Virtual Machine using VMware Workstation for a Windows device. This guide is in reference to the [Arch Wiki Installation Guide]( https://wiki.archlinux.org/title/Installation_guide). In addition, **problems and solutions** encountered along the way can be referenced in **Part 8** of this document. 
+The purpose of this guide is to document the steps taken to install Arch Linux in a Virtual Machine using VMware Workstation for a Windows device. This guide is in reference to the [Arch Wiki Installation Guide]( https://wiki.archlinux.org/title/Installation_guide). In addition, **problems and solutions** encountered along the way can be referenced at the bottom of this document. 
 
 ## Virtual Machine Specifications 
 - Virtualization software: VMware workstation
