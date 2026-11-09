@@ -232,7 +232,7 @@ options root=UUID=**ROOT-UUID** rw
 2.  To enable VMware integration, use the command **systemctl enable vmtoolsd**.
 
 # Part 8
-# - Creating User Accounts with sudo Permissions
+# Creating User Accounts with sudo Permissions
 ---
 ## Step 30 - Creating personal account:
 1. User accounts can be created using **useradd -m -G wheel -s /usr/bin/zsh username**. This adds the user account to the **wheel group**.
