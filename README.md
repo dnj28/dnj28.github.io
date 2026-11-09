@@ -358,6 +358,8 @@ Solution:
 - When giving sudo permissions to the users in the wheel group, I encountered confusion on determining which entries to comment out. For context, there were 2 similar entries for the wheel group: **%wheel ALL=(ALL:ALL) ALL** and **%wheel ALL=(ALL:ALL) NOPASSWD: ALL**.
 - For my VM I wanted the users to enter a password to gain sudo access, so I commented out the first option **%wheel ALL=(ALL:ALL) ALL**.
 - However, upon saving the changes, uncommenting the wheel group entry did not enable sudo permissions.
+
+Solution
 - It was not until I reopened the /etc/sudoers file with nano a second time, that I noticed an extra space before the commented out wheel entry.
 - After deleting the space, I saved the changes and I used the **groups** command to verify users in the wheel group.
 - Finally, I entered **sudo whoami** and I was able to return to root.
