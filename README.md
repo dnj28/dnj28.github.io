@@ -330,7 +330,7 @@ alias grep='grep --color=auto'
 # Part 12
 # Installing an AUR Package
 ---
-# Step 37. Install an AUR helper
+## Step 37. Install an AUR helper
 1. considering that git and base-devel were installed in the previous steps, we only need to download the para AUR helper.
 2. To download the paru AUR helper enter the command **git clone https://aur.archlinux.org/paru.git**.
 3. Now, to enter the paru directory, enter **cd paru**.
